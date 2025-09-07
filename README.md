@@ -35,3 +35,7 @@ yts-cli
 Example:
 
 ![[yts-cli in action]](demo.png)
+
+## Credits:
+
+Credits to charmbracelet/lipgloss library for the box styling. (https://github.com/charmbracelet/lipgloss)
