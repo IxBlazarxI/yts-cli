@@ -1,6 +1,6 @@
 pkgbase = yts-cli
 	pkgdesc = CLI YouTube Web Scraper in GO (no API needed)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/IxBlazarxI/yts-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yts-cli
 	depends = curl
 	depends = grep
 	depends = awk
-	source = https://github.com/IxBlazarxI/yts-cli/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/IxBlazarxI/yts-cli/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = yts-cli

@@ -1,6 +1,6 @@
 # Maintainer: Your Name blazar11111@gmail.com
 pkgname=yts-cli
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CLI YouTube Web Scraper in GO (no API needed)"
 arch=('x86_64')
