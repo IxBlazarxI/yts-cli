@@ -11,6 +11,6 @@ pkgbase = yts-cli
 	depends = grep
 	depends = awk
 	source = https://github.com/IxBlazarxI/yts-cli/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = daea67461ed6487577c64d1ca36abbb987a26606ef03d3d7c61da1da1e7a5b16
 
 pkgname = yts-cli
