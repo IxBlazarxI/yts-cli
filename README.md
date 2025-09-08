@@ -8,6 +8,8 @@ YTS-CLI is a CLI YouTube Web Scraper, a lightweight command line tool to search 
 - Search YouTube directly from terminal.
 - Specify the number of results you want to see.
 - Outputs video titles and URLs in neat boxes.
+- Prompts you to select a video.
+- Opens MPV to watch the video you selected.
 
 ## Installation: 
 
