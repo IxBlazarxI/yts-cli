@@ -31,6 +31,4 @@ func checkDep() {
 		}
 		os.Exit(1)
 	}
-
-	fmt.Println(depFoundStyle.Render("All dependencies found."))
 }

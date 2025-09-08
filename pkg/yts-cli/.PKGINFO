@@ -3,12 +3,12 @@
 pkgname = yts-cli
 pkgbase = yts-cli
 xdata = pkgtype=pkg
-pkgver = 1.0.0-1
+pkgver = 1.1.0-1
 pkgdesc = CLI YouTube Web Scraper in GO (no API needed)
 url = https://github.com/IxBlazarxI/yts-cli
-builddate = 1757250798
+builddate = 1757332828
 packager = Unknown Packager
-size = 2879072
+size = 2986976
 arch = x86_64
 license = MIT
 depend = bash

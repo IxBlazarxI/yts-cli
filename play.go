@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+
 func playVid(videoId string) {
 	url := "https://www.youtube.com/watch?v=" + videoId
 
@@ -19,10 +20,4 @@ func playVid(videoId string) {
 	if err := cmd.Run(); err != nil {
 			fmt.Println("Error playing video:", err)
 	}
-
-	defer os.Remove("videoIds.txt")
-	defer os.Remove("videoTitles.txt")
-	defer os.Remove("yInitialData.json")
-	defer os.Remove("combined.txt")
-
 }

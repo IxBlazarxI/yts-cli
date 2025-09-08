@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'curl' 'grep' 'awk')
 makedepends=('go')
 source=("https://github.com/IxBlazarxI/yts-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Replace with actual sha256sum if desired
+sha256sums=('daea67461ed6487577c64d1ca36abbb987a26606ef03d3d7c61da1da1e7a5b16')
 
 build() {
     cd "$srcdir/yts-cli-$pkgver"

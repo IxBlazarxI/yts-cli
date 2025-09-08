@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"os/signal"
 	"bufio"
+	"syscall"
 	"os"
 	"os/exec"
 	"github.com/charmbracelet/lipgloss"
@@ -47,6 +49,25 @@ func main() {
 		fmt.Println("Failed to create temp script: ", err)
 		return
 	}
+
+	tempFiles := []string {
+		"videoIds.txt",
+		"videoTitles.txt",
+		"yInitialData.json",
+		"combined.txt",
+		tmpScript,
+	}
+
+	defer cleanUp(tempFiles...)
+
+	// Remove tmp files if CTRL + C
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+	go func () {
+		<-c
+		cleanUp(tempFiles...)
+		os.Exit(1)
+	}()
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -103,9 +124,10 @@ func main() {
 	selectedId := idList[choice - 1]
 	playVid(selectedId)
 
-	defer os.Remove("videoIds.txt")
-	defer os.Remove("videoTitles.txt")
-	defer os.Remove("yInitialData.json")
-	defer os.Remove("combined.txt")
-	defer os.Remove(tmpScript)
+}
+
+func cleanUp(files ...string) {
+	for _, f := range files {
+		os.Remove(f)
+	}
 }

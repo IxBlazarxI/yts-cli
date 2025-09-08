@@ -3,12 +3,12 @@
 pkgname = yts-cli-debug
 pkgbase = yts-cli
 xdata = pkgtype=debug
-pkgver = 1.0.0-1
+pkgver = 1.1.0-1
 pkgdesc = Detached debugging symbols for yts-cli
 url = https://github.com/IxBlazarxI/yts-cli
-builddate = 1757250798
+builddate = 1757332828
 packager = Unknown Packager
-size = 1245471
+size = 1290162
 arch = x86_64
 license = MIT
 makedepend = go
