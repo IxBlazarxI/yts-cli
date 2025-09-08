@@ -19,7 +19,7 @@ sudo pacman -S yt-dlp
 sudo pacman -S mpv
 ```
 
-From **AUR** (Arch Linux User Repository)
+From **AUR** (Arch Linux User Repository), install the package:
 
 ```bash
 yay -S yts-cli
