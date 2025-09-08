@@ -9,8 +9,39 @@ import (
 	"strings"
 )
 
+var (
+	promptStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("#00ff87"))
+	
+	resultsStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("#a3a0f0")).
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(lipgloss.Color("#6f6dc7")).
+		MaxWidth(117).
+		Align(lipgloss.Left)
+
+	 videoTitleStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("#ffd580"))
+
+	 URLStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("#80dfff"))
+
+	headerStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("#ff9f80"))
+
+	videoChooseStyle = lipgloss.NewStyle().
+		Bold(true). 
+		Foreground(lipgloss.Color("#ffcf6f"))
+)
+
 func main() {
 
+	checkDep()
 	tmpScript, err := writeTempScript()
 	if err != nil {
 		fmt.Println("Failed to create temp script: ", err)
@@ -19,23 +50,12 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 
-	var styleQuery = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#8FA31E"))
 
-	var maxResStyle = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#556B2F"))
-
-	var headerStyle = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#c6d870"))
-
-	fmt.Print(styleQuery.Render("Search for a video title: "))
+	fmt.Print(promptStyle.Render("Search for a video title: "))
 	query, _ := reader.ReadString('\n')
 	query = strings.TrimSpace(query)
 
-	fmt.Print(maxResStyle.Render("Number of Results: "))
+	fmt.Print(promptStyle.Render("Number of Results: "))
 	var maxResults string
 	fmt.Scan(&maxResults)
 	fmt.Print("\n")
@@ -58,25 +78,10 @@ func main() {
 
 	fmt.Println(headerStyle.Render("Search Results:\n"))
 
-	var resultsStyle = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#5d688a")).
-		BorderStyle(lipgloss.NormalBorder()).
-		BorderForeground(lipgloss.Color("63")).
-		MaxWidth(117).
-		Align(lipgloss.Left)
-
-	var videoTitleStyle = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#556b2f"))
-
-	var URLStyle = lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#8fa31e"))
 
 	for i := range idList {
 		if i < len(titleList) {
-			title := videoTitleStyle.Render(fmt.Sprintf("Video Title: %s", titleList[i]))
+			title := videoTitleStyle.Render(fmt.Sprintf("%d. Video Title: %s", i+1, titleList[i]))
 			url := URLStyle.Render(fmt.Sprintf("URL: https://www.youtube.com/watch?v=%s", idList[i]))
 
 			block := resultsStyle.Render(title + "\n" + url)
@@ -85,7 +90,19 @@ func main() {
 			fmt.Println()
 		}
 	}
-	
+
+	var choice int
+
+	fmt.Print(videoChooseStyle.Render("Choose video to play: "))
+	fmt.Scan(&choice)
+
+	if choice > len(idList) || choice < 1 {
+		fmt.Println("Please select from available videos.")
+	}
+
+	selectedId := idList[choice - 1]
+	playVid(selectedId)
+
 	defer os.Remove("videoIds.txt")
 	defer os.Remove("videoTitles.txt")
 	defer os.Remove("yInitialData.json")
