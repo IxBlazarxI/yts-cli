@@ -11,6 +11,14 @@ YTS-CLI is a CLI YouTube Web Scraper, a lightweight command line tool to search 
 
 ## Installation: 
 
+This package requires some dependencies to run.
+
+For Arch Linux Users:
+```bash
+sudo pacman -S yt-dlp
+sudo pacman -S mpv
+```
+
 From **AUR** (Arch Linux User Repository)
 
 ```bash
