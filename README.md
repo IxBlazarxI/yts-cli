@@ -21,14 +21,7 @@ sudo pacman -S yt-dlp
 sudo pacman -S mpv
 ```
 
-From **AUR** (Arch Linux User Repository), install the package:
-
-```bash
-yay -S yts-cli
-```
-
-If you want to build it from source:
-
+Build it with this command:
 ```bash
 git clone https://github.com/IxBlazarxI/yts-cli.git
 cd yts-cli
